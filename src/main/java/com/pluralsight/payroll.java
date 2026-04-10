@@ -19,21 +19,18 @@ public class payroll {
         //Asks for pay rate and overtime variable
         System.out.print("What is your Hourly pay? ");
         double payRate = input.nextDouble();
-        double otPay = payRate * 1.5;
-
-
 
         //Calculates Pay based off values they entered
         double payCalc = payRate * hoursWorked;
+        double otPay = (hoursWorked - 40) * (payRate * 1.5);
 
-        //the first 40 hours would be calculated as normal then, after 40 you would use ot pay and add it ontop of the normal pay
-        //math is not correct needs tweaking
+        // the first 40 hours would be calculated as normal then, after 40 you would use ot pay and add it ontop of the normal pay
         if (hoursWorked > 40){
-            payCalc = (payRate + otPay) * hoursWorked;
+            payCalc = 40 * payRate;
+            System.out.printf("%s's weekly pay is $%.2f",employeeName, payCalc + otPay);
         }
-
-        //display's name and weekly pay
-        System.out.printf("%s's weekly pay is $%.2f",employeeName, payCalc);
-        //add if statement to pay 1.5x pay after 40hrs worked
+        else {
+            System.out.printf("%s's weekly pay is $%.2f",employeeName, payCalc);
+        }
     }
 }
